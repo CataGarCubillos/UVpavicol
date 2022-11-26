@@ -23,18 +23,20 @@ public class Start extends javax.swing.JFrame {
 
         jPanel5 = new javax.swing.JPanel();
         btnGranja = new javax.swing.JButton();
-        btnCerrar = new javax.swing.JButton();
         btnUsuario1 = new javax.swing.JButton();
         btnLote = new javax.swing.JButton();
         jButton13 = new javax.swing.JButton();
+        btnCerrar = new javax.swing.JButton();
         desktop = new javax.swing.JDesktopPane();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("UVPavicol");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel5.setBackground(new java.awt.Color(255, 102, 102));
         jPanel5.setDoubleBuffered(false);
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnGranja.setBackground(new java.awt.Color(255, 102, 102));
         btnGranja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/building3.png"))); // NOI18N
@@ -44,14 +46,7 @@ public class Start extends javax.swing.JFrame {
                 btnGstnGranjaActionPerformed(evt);
             }
         });
-
-        btnCerrar.setBackground(new java.awt.Color(102, 51, 0));
-        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoutcurve.png"))); // NOI18N
-        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
+        jPanel5.add(btnGranja, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 60, -1));
 
         btnUsuario1.setBackground(new java.awt.Color(255, 102, 102));
         btnUsuario1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/useredit.png"))); // NOI18N
@@ -61,6 +56,7 @@ public class Start extends javax.swing.JFrame {
                 btnUsuarioActionPerformed(evt);
             }
         });
+        jPanel5.add(btnUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 202, 60, -1));
 
         btnLote.setBackground(new java.awt.Color(255, 102, 102));
         btnLote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/gallina (1).png"))); // NOI18N
@@ -70,43 +66,24 @@ public class Start extends javax.swing.JFrame {
                 jButton9ActionPerformed(evt);
             }
         });
+        jPanel5.add(btnLote, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 60, -1));
 
         jButton13.setBackground(new java.awt.Color(255, 102, 102));
         jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Univalle.png"))); // NOI18N
         jButton13.setBorderPainted(false);
+        jPanel5.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, -1));
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnCerrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnUsuario1)
-                    .addComponent(btnGranja))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton13)
-                    .addComponent(btnLote, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(jButton13)
-                .addGap(134, 134, 134)
-                .addComponent(btnUsuario1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnGranja)
-                .addGap(18, 18, 18)
-                .addComponent(btnLote)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 171, Short.MAX_VALUE)
-                .addComponent(btnCerrar))
-        );
+        btnCerrar.setBackground(new java.awt.Color(102, 51, 0));
+        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoutcurve.png"))); // NOI18N
+        btnCerrar.setBorder(null);
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+        jPanel5.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 560, 60, 60));
 
-        getContentPane().add(jPanel5, java.awt.BorderLayout.WEST);
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, 620));
 
         desktop.setBackground(new java.awt.Color(255, 204, 204));
 
@@ -121,17 +98,17 @@ public class Start extends javax.swing.JFrame {
             .addGroup(desktopLayout.createSequentialGroup()
                 .addGap(176, 176, 176)
                 .addComponent(jLabel1)
-                .addContainerGap(268, Short.MAX_VALUE))
+                .addContainerGap(274, Short.MAX_VALUE))
         );
         desktopLayout.setVerticalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, desktopLayout.createSequentialGroup()
+            .addGroup(desktopLayout.createSequentialGroup()
                 .addContainerGap(118, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(95, 95, 95))
         );
 
-        getContentPane().add(desktop, java.awt.BorderLayout.CENTER);
+        getContentPane().add(desktop, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, 850, -1));
 
         getAccessibleContext().setAccessibleDescription("Proyecto Final");
 
