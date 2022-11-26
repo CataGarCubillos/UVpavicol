@@ -11,7 +11,7 @@ public class Usuario {
     private Granja laGranja;
     //no hay asociacion a muchos
     
-    public Usuario(String nombre, String correo, String password, Granja laGranja) throws Exception {
+    public Usuario(String nombre, String correo, String password) throws Exception {
         if(nombre == null ||"".equals(nombre)){
             throw new Exception("Porfavor digite el nombre del Usuario");
         }         
@@ -21,9 +21,7 @@ public class Usuario {
         if(password == null ||"".equals(nombre)){
             throw new Exception("Porfavor digite el nombre del Propietario");
         } 
-        if(laGranja == null){
-            throw new Exception("ERROR. cada usuario debe tener asignada una granja");
-        }
+      
         this.nombre = nombre;
         this.correo = correo;
         this.password = password;

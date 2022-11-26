@@ -46,7 +46,7 @@ public class Start extends javax.swing.JFrame {
                 btnGstnGranjaActionPerformed(evt);
             }
         });
-        jPanel5.add(btnGranja, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 60, -1));
+        jPanel5.add(btnGranja, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 60, -1));
 
         btnUsuario1.setBackground(new java.awt.Color(255, 102, 102));
         btnUsuario1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/useredit.png"))); // NOI18N
@@ -56,7 +56,7 @@ public class Start extends javax.swing.JFrame {
                 btnUsuarioActionPerformed(evt);
             }
         });
-        jPanel5.add(btnUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 202, 60, -1));
+        jPanel5.add(btnUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 60, -1));
 
         btnLote.setBackground(new java.awt.Color(255, 102, 102));
         btnLote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/gallina (1).png"))); // NOI18N
@@ -99,7 +99,7 @@ public class Start extends javax.swing.JFrame {
             .addGroup(desktopLayout.createSequentialGroup()
                 .addGap(232, 232, 232)
                 .addComponent(jLabel1)
-                .addContainerGap(248, Short.MAX_VALUE))
+                .addContainerGap(358, Short.MAX_VALUE))
         );
         desktopLayout.setVerticalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,7 +109,7 @@ public class Start extends javax.swing.JFrame {
                 .addContainerGap(110, Short.MAX_VALUE))
         );
 
-        getContentPane().add(desktop, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, 880, -1));
+        getContentPane().add(desktop, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, 990, -1));
 
         getAccessibleContext().setAccessibleDescription("Proyecto Final");
 

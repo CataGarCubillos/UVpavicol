@@ -4,15 +4,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import uvpavicol.clases.Empresa;
 
-
 public class Usuarios extends javax.swing.JInternalFrame {
 
-   private Empresa empresa;
+    private Empresa empresa;
+
     public Usuarios(Empresa empresa) {
         this.empresa = empresa;
         initComponents();
-        
-        btnRegistrarse.addActionListener(new ManejadorAbrirUserRegister());
+
     }
 
     /**
@@ -31,9 +30,9 @@ public class Usuarios extends javax.swing.JInternalFrame {
         jTextField3 = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        btnIngresar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        btnRegistrarse = new javax.swing.JButton();
+        btnRegistrar = new javax.swing.JButton();
         desktop = new javax.swing.JDesktopPane();
         jLabel9 = new javax.swing.JLabel();
 
@@ -63,24 +62,29 @@ public class Usuarios extends javax.swing.JInternalFrame {
 
         jTextField4.setBackground(new java.awt.Color(255, 204, 204));
 
-        jButton3.setBackground(new java.awt.Color(102, 51, 0));
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Ingresar");
-        jButton3.setToolTipText("");
-        jButton3.setBorderPainted(false);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnIngresar.setBackground(new java.awt.Color(102, 51, 0));
+        btnIngresar.setForeground(new java.awt.Color(255, 255, 255));
+        btnIngresar.setText("Ingresar");
+        btnIngresar.setToolTipText("");
+        btnIngresar.setBorderPainted(false);
+        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnIngresarActionPerformed(evt);
             }
         });
 
         jLabel1.setText("¿No tienes una cuenta?");
 
-        btnRegistrarse.setBackground(new java.awt.Color(255, 102, 102));
-        btnRegistrarse.setFont(new java.awt.Font("Segoe UI Symbol", 1, 14)); // NOI18N
-        btnRegistrarse.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegistrarse.setText("Regístrate");
-        btnRegistrarse.setBorder(null);
+        btnRegistrar.setBackground(new java.awt.Color(255, 102, 102));
+        btnRegistrar.setFont(new java.awt.Font("Segoe UI Symbol", 1, 14)); // NOI18N
+        btnRegistrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegistrar.setText("Regístrate");
+        btnRegistrar.setBorder(null);
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -99,14 +103,10 @@ public class Usuarios extends javax.swing.JInternalFrame {
                                 .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(104, 104, 104)
-                        .addComponent(jButton3))
+                        .addComponent(btnIngresar))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(17, 17, 17)
-                                .addComponent(jLabel10)))))
+                        .addGap(94, 94, 94)
+                        .addComponent(jLabel10)))
                 .addContainerGap(33, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -115,8 +115,12 @@ public class Usuarios extends javax.swing.JInternalFrame {
                         .addComponent(jLabel1)
                         .addGap(25, 25, 25))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnRegistrarse)
+                        .addComponent(btnRegistrar)
                         .addGap(54, 54, 54))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(51, 51, 51))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,38 +140,48 @@ public class Usuarios extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton3))
+                        .addComponent(btnIngresar))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(159, 159, 159)
                         .addComponent(jLabel1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnRegistrarse)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addComponent(btnRegistrar)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 400));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 390));
 
         desktop.setBackground(new java.awt.Color(255, 204, 204));
         desktop.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/polloReducido .png"))); // NOI18N
-        desktop.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 241, -1));
+        desktop.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 241, -1));
 
-        getContentPane().add(desktop, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 570, 400));
+        getContentPane().add(desktop, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 260, 390));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnIngresarActionPerformed
 
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+
+        UsuariosRegister vtnUsuarioRegisterl = new UsuariosRegister(empresa);
+
+        vtnUsuarioRegisterl.setVisible(true);
+        
+        this.dispose();
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRegistrarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnRegistrarse;
+    private javax.swing.JButton btnIngresar;
+    private javax.swing.JButton btnRegistrar;
     private javax.swing.JDesktopPane desktop;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -179,18 +193,4 @@ public class Usuarios extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 
-
-public class ManejadorAbrirUserRegister implements ActionListener{
-            private UsuariosRegister vtnUsuarioRegister = null;
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            if (this.vtnUsuarioRegister == null){
-                vtnUsuarioRegister = new UsuariosRegister(empresa);
-                desktop.add(vtnUsuarioRegister);
-            }
-            vtnUsuarioRegister.setVisible(true);
-        }
-    
-}
 }
