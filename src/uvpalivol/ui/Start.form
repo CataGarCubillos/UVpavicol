@@ -27,7 +27,7 @@
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
   <SubComponents>
-    <Container class="javax.swing.JDesktopPane" name="jDesktopPane1">
+    <Container class="javax.swing.JDesktopPane" name="desktop">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="cc" red="ff" type="rgb"/>
@@ -84,9 +84,9 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButton5" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnGstnLotes" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jButton6" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton7" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnGstnGranja" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jButton10" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jButton9" alignment="0" min="-2" pref="54" max="-2" attributes="0"/>
                       </Group>
@@ -99,11 +99,11 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jButton10" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
-                      <Component id="jButton5" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnGstnLotes" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton6" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jButton7" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnGstnGranja" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jButton9" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
@@ -113,7 +113,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="jButton5">
+            <Component class="javax.swing.JButton" name="btnGstnLotes">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="66" green="66" red="ff" type="rgb"/>
@@ -124,7 +124,7 @@
                 <Property name="borderPainted" type="boolean" value="false"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton7">
+            <Component class="javax.swing.JButton" name="btnGstnGranja">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="66" green="66" red="ff" type="rgb"/>
@@ -135,7 +135,7 @@
                 <Property name="borderPainted" type="boolean" value="false"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton7ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGstnGranjaActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton8">
