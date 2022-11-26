@@ -4,7 +4,7 @@ package uvpalivol.ui;
 import uvpavicol.clases.Empresa;
 
 
-public class GestionLotes extends javax.swing.JFrame {
+public class GestionLotes extends javax.swing.JInternalFrame {
     private Empresa empresa;
 
     public GestionLotes(Empresa empresa) {

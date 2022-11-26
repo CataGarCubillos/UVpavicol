@@ -11,129 +11,122 @@ public class Start extends javax.swing.JFrame {
     public Start(Empresa empresa) {
         this.empresa = empresa;
         initComponents();
-        
-        btnGstnGranja.addActionListener(new ManejadorAbrirGestionLotes());
-        
+        btnLote.addActionListener(new ManejadorAbrirGestionLotes());
+        btnGranja.addActionListener(new ManejadorAbirGestionGranja());
+        btnUsuario1.addActionListener(new ManejadorAbrirUsuarios());
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel5 = new javax.swing.JPanel();
+        btnGranja = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
+        btnUsuario1 = new javax.swing.JButton();
+        btnLote = new javax.swing.JButton();
+        jButton13 = new javax.swing.JButton();
         desktop = new javax.swing.JDesktopPane();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        btnGstnLotes = new javax.swing.JButton();
-        btnGstnGranja = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("UVPavicol");
 
-        desktop.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel5.setBackground(new java.awt.Color(255, 102, 102));
+        jPanel5.setDoubleBuffered(false);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pollo Navidad 2.png"))); // NOI18N
-
-        jPanel4.setBackground(new java.awt.Color(255, 102, 102));
-        jPanel4.setDoubleBuffered(false);
-
-        btnGstnLotes.setBackground(new java.awt.Color(255, 102, 102));
-        btnGstnLotes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Añadir Galpon.png"))); // NOI18N
-        btnGstnLotes.setBorderPainted(false);
-
-        btnGstnGranja.setBackground(new java.awt.Color(255, 102, 102));
-        btnGstnGranja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/building3.png"))); // NOI18N
-        btnGstnGranja.setBorderPainted(false);
-        btnGstnGranja.addActionListener(new java.awt.event.ActionListener() {
+        btnGranja.setBackground(new java.awt.Color(255, 102, 102));
+        btnGranja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/building3.png"))); // NOI18N
+        btnGranja.setBorderPainted(false);
+        btnGranja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGstnGranjaActionPerformed(evt);
             }
         });
 
-        jButton8.setBackground(new java.awt.Color(102, 51, 0));
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoutcurve.png"))); // NOI18N
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        jButton11.setBackground(new java.awt.Color(102, 51, 0));
+        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoutcurve.png"))); // NOI18N
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
             }
         });
 
-        jButton6.setBackground(new java.awt.Color(255, 102, 102));
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/useredit.png"))); // NOI18N
-        jButton6.setBorderPainted(false);
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnUsuario1.setBackground(new java.awt.Color(255, 102, 102));
+        btnUsuario1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/useredit.png"))); // NOI18N
+        btnUsuario1.setBorderPainted(false);
+        btnUsuario1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnUsuarioActionPerformed(evt);
             }
         });
 
-        jButton9.setBackground(new java.awt.Color(255, 102, 102));
-        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/gallina (1).png"))); // NOI18N
-        jButton9.setBorderPainted(false);
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        btnLote.setBackground(new java.awt.Color(255, 102, 102));
+        btnLote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/gallina (1).png"))); // NOI18N
+        btnLote.setBorderPainted(false);
+        btnLote.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
             }
         });
 
-        jButton10.setBackground(new java.awt.Color(255, 102, 102));
-        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Univalle.png"))); // NOI18N
-        jButton10.setBorderPainted(false);
+        jButton13.setBackground(new java.awt.Color(255, 102, 102));
+        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Univalle.png"))); // NOI18N
+        jButton13.setBorderPainted(false);
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jButton11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnUsuario1)
+                    .addComponent(btnGranja))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnGstnLotes)
-                    .addComponent(jButton6)
-                    .addComponent(btnGstnGranja)
-                    .addComponent(jButton10)
-                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addComponent(jButton13)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(btnLote, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jButton10)
-                .addGap(72, 72, 72)
-                .addComponent(btnGstnLotes)
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addComponent(jButton13)
+                .addGap(134, 134, 134)
+                .addComponent(btnUsuario1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnGstnGranja)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton8))
+                .addComponent(btnGranja)
+                .addGap(29, 29, 29)
+                .addComponent(btnLote)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
+                .addComponent(jButton11))
         );
 
-        desktop.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        desktop.setLayer(jPanel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        getContentPane().add(jPanel5, java.awt.BorderLayout.WEST);
+
+        desktop.setBackground(new java.awt.Color(255, 204, 204));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pollo Navidad 2.png"))); // NOI18N
+
+        desktop.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout desktopLayout = new javax.swing.GroupLayout(desktop);
         desktop.setLayout(desktopLayout);
         desktopLayout.setHorizontalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, desktopLayout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 270, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(220, 220, 220))
+            .addGroup(desktopLayout.createSequentialGroup()
+                .addGap(176, 176, 176)
+                .addComponent(jLabel1)
+                .addContainerGap(268, Short.MAX_VALUE))
         );
         desktopLayout.setVerticalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, desktopLayout.createSequentialGroup()
-                .addContainerGap(67, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66))
-            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(118, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(95, 95, 95))
         );
 
         getContentPane().add(desktop, java.awt.BorderLayout.CENTER);
@@ -143,13 +136,9 @@ public class Start extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+    private void btnUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_btnUsuarioActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
@@ -159,30 +148,71 @@ public class Start extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnGstnGranjaActionPerformed
 
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton9ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGranja;
     private javax.swing.JButton btnGstnGranja;
     private javax.swing.JButton btnGstnLotes;
+    private javax.swing.JButton btnLote;
+    private javax.swing.JButton btnUsuario;
+    private javax.swing.JButton btnUsuario1;
     private javax.swing.JDesktopPane desktop;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     // End of variables declaration//GEN-END:variables
 
-    public class ManejadorAbrirGestionLotes implements ActionListener {
-
-        private GestionGranjas vtnGestionGranjas = null;
+    //Manejadores para abrir las ventanas
+    public class ManejadorAbirGestionGranja implements ActionListener {
+            private GestionGranjas vtnGestionGranja = null;
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if ( vtnGestionGranjas== null ){
-                vtnGestionGranjas = new GestionGranjas(empresa);
-                desktop.add(vtnGestionGranjas);
+            if (this.vtnGestionGranja == null){
+                vtnGestionGranja = new GestionGranjas(empresa);
+                desktop.add(vtnGestionGranja);
             }
-            vtnGestionGranjas.setVisible(true);
+            vtnGestionGranja.setVisible(true);
+        }
+        
+    }
+
+    public class ManejadorAbrirGestionLotes implements ActionListener {
+
+        private GestionLotes vtnGestionLotes = null;
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (this.vtnGestionLotes == null) {
+                vtnGestionLotes = new GestionLotes(empresa);
+                desktop.add(vtnGestionLotes);
+            }
+            vtnGestionLotes.setVisible(true);
+        }
+
+    }
+
+    public class ManejadorAbrirUsuarios implements ActionListener {
+
+        private Usuarios vtnUsuarios = null;
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (this.vtnUsuarios == null) {
+                vtnUsuarios = new Usuarios(empresa);
+                desktop.add(vtnUsuarios);
+            }
+            vtnUsuarios.setVisible(true);
+
         }
 
     }
