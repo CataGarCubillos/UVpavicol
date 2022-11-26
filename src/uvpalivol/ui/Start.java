@@ -14,6 +14,7 @@ public class Start extends javax.swing.JFrame {
         btnLote.addActionListener(new ManejadorAbrirGestionLotes());
         btnGranja.addActionListener(new ManejadorAbirGestionGranja());
         btnUsuario1.addActionListener(new ManejadorAbrirUsuarios());
+        btnCerrar.addActionListener(new manejadorCerrar());
     }
 
     @SuppressWarnings("unchecked")
@@ -22,7 +23,7 @@ public class Start extends javax.swing.JFrame {
 
         jPanel5 = new javax.swing.JPanel();
         btnGranja = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
+        btnCerrar = new javax.swing.JButton();
         btnUsuario1 = new javax.swing.JButton();
         btnLote = new javax.swing.JButton();
         jButton13 = new javax.swing.JButton();
@@ -44,9 +45,9 @@ public class Start extends javax.swing.JFrame {
             }
         });
 
-        jButton11.setBackground(new java.awt.Color(102, 51, 0));
-        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoutcurve.png"))); // NOI18N
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
+        btnCerrar.setBackground(new java.awt.Color(102, 51, 0));
+        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoutcurve.png"))); // NOI18N
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
             }
@@ -78,7 +79,7 @@ public class Start extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnCerrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnUsuario1)
@@ -86,9 +87,10 @@ public class Start extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton13)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton13)
+                    .addComponent(btnLote, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(btnLote, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,10 +100,10 @@ public class Start extends javax.swing.JFrame {
                 .addComponent(btnUsuario1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnGranja)
-                .addGap(29, 29, 29)
+                .addGap(18, 18, 18)
                 .addComponent(btnLote)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
-                .addComponent(jButton11))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 171, Short.MAX_VALUE)
+                .addComponent(btnCerrar))
         );
 
         getContentPane().add(jPanel5, java.awt.BorderLayout.WEST);
@@ -154,20 +156,13 @@ public class Start extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnGranja;
-    private javax.swing.JButton btnGstnGranja;
-    private javax.swing.JButton btnGstnLotes;
     private javax.swing.JButton btnLote;
-    private javax.swing.JButton btnUsuario;
     private javax.swing.JButton btnUsuario1;
     private javax.swing.JDesktopPane desktop;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     // End of variables declaration//GEN-END:variables
 
@@ -217,4 +212,15 @@ public class Start extends javax.swing.JFrame {
 
     }
 
+    
+    
+    public class manejadorCerrar implements ActionListener{
+            private Start inicio;
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            inicio.dispose();
+        }
+        
+    }
 }

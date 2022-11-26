@@ -8,7 +8,7 @@ public class GestionLotes extends javax.swing.JInternalFrame {
     private Empresa empresa;
 
     public GestionLotes(Empresa empresa) {
-        this.empresa = empresa;
+        this.empresa = empresa;  
         initComponents();
     }
 
