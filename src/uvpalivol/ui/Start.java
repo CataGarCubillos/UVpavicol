@@ -70,6 +70,7 @@ public class Start extends javax.swing.JFrame {
 
         jButton13.setBackground(new java.awt.Color(255, 102, 102));
         jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Univalle.png"))); // NOI18N
+        jButton13.setBorder(null);
         jButton13.setBorderPainted(false);
         jPanel5.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, -1));
 
@@ -96,19 +97,19 @@ public class Start extends javax.swing.JFrame {
         desktopLayout.setHorizontalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(desktopLayout.createSequentialGroup()
-                .addGap(176, 176, 176)
+                .addGap(232, 232, 232)
                 .addComponent(jLabel1)
-                .addContainerGap(274, Short.MAX_VALUE))
+                .addContainerGap(248, Short.MAX_VALUE))
         );
         desktopLayout.setVerticalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(desktopLayout.createSequentialGroup()
-                .addContainerGap(118, Short.MAX_VALUE)
+                .addGap(103, 103, 103)
                 .addComponent(jLabel1)
-                .addGap(95, 95, 95))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
 
-        getContentPane().add(desktop, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, 850, -1));
+        getContentPane().add(desktop, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, 880, -1));
 
         getAccessibleContext().setAccessibleDescription("Proyecto Final");
 
