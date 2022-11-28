@@ -5,6 +5,7 @@ import java.util.List;
 import static uvpavicol.clases.TipoGranja.CONVENIO;
 
 public class Empresa {
+
     private String nombre;
     //no hay asociacion uno a uno
     //asociacion a muchos
@@ -13,9 +14,12 @@ public class Empresa {
     private List<Granja> lasGranjas = new LinkedList();
 
     public Empresa(String nombre) throws Exception {
-        if(nombre == null ||"".equals(nombre)){
+
+        nombre = nombre.trim();
+        if (nombre.equals("")) {
             throw new Exception("Porfavor digite el nombre de la empresa");
         }
+
         this.nombre = nombre;
     }
 
@@ -23,49 +27,73 @@ public class Empresa {
     public void addUsuarios(Usuario usuarios) {
         this.losUsuarios.add(usuarios);
     }
+
     public void removeUsuarios(Usuario usuarios) {
         this.losUsuarios.remove(usuarios);
     }
+
     public List<Usuario> getLosUusuarios() {
         return losUsuarios;
     }
+
     public void setLosUusuarios(List<Usuario> losUusuarios) {
         this.losUsuarios = losUusuarios;
     }
+
+    //Método para buscar un usuario
+    public Usuario buscarUsuarios(String userName) throws UserRegistreredException {
+        for (int i = 0; i < this.losUsuarios.size(); i++) {
+            Usuario myUser = this.losUsuarios.get(i);
+            if (myUser.getNombre() == userName) {
+                return myUser;
+            }
+        }
+        throw new UserRegistreredException (" El usuario ya ha sido usado y/o creado, porfavor, pruebe con otro");
+    }
+
 //----------------------------------------------------------------------------
     //metodos de Lote
     public void addLotes(Lote lotes) {
         this.losLotes.add(lotes);
     }
+
     public void removeLotes(Lote lotes) {
         this.losLotes.add(lotes);
     }
+
     public List<Lote> getLosLotes() {
         return losLotes;
     }
+
     public void setLosLotes(List<Lote> losLotes) {
         this.losLotes = losLotes;
     }
 //----------------------------------------------------------------------------
     //metodos de granja
+
     public void addGranjas(Granja granjas) {
         this.lasGranjas.add(granjas);
     }
+
     public void removeGranjas(Granja granjas) {
         this.lasGranjas.remove(granjas);
     }
+
     public List<Granja> getLasGranjas() {
         return lasGranjas;
     }
+
     public void setLasGranjas(List<Granja> lasGranjas) {
         this.lasGranjas = lasGranjas;
     }
-    public Granja InfoPropietario(){
-        for(int i = 0;i<this.lasGranjas.size();i++){
+
+    public Granja InfoPropietario() {
+        for (int i = 0; i < this.lasGranjas.size(); i++) {
             Granja info = this.lasGranjas.get(i);
-            if(info.getTipoGranja()== CONVENIO ){
+            if (info.getTipoGranja() == CONVENIO) {
                 return info;
             }
-        }return null;
+        }
+        return null;
     }
 }

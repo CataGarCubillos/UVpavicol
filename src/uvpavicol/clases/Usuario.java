@@ -12,14 +12,17 @@ public class Usuario {
     //no hay asociacion a muchos
     
     public Usuario(String nombre, String correo, String password) throws Exception {
-        if(nombre == null ||"".equals(nombre)){
-            throw new Exception("Porfavor digite el nombre del Usuario");
+        nombre = nombre.trim();
+        if(nombre.equals("")){
+            throw new Exception("El usuario debe tener un nombre");
         }         
-        if(correo == null ||"".equals(nombre)){
-            throw new Exception("Porfavor digite el nombre del Propietario");
+        correo = correo.trim();
+        if(correo.equals("")){
+            throw new Exception("El usuario debe tener un correo");
         } 
-        if(password == null ||"".equals(nombre)){
-            throw new Exception("Porfavor digite el nombre del Propietario");
+        password = password.trim();
+        if(password.equals("")){
+            throw new Exception("El usuario debe tener una contraseña");
         } 
       
         this.nombre = nombre;
