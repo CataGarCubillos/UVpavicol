@@ -13,6 +13,7 @@ import javax.swing.event.ListDataListener;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
 import uvpavicol.clases.Empresa;
+import uvpavicol.clases.EstadoLote;
 import uvpavicol.clases.Galpon;
 import uvpavicol.clases.Lote;
 
@@ -56,11 +57,9 @@ public class PlantillaNuevoLote extends javax.swing.JInternalFrame {
         btnGuardar = new javax.swing.JButton();
         btnBorrar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         boxGalpon = new javax.swing.JComboBox<>();
-        txfFecha = new javax.swing.JTextField();
         txfAvesIngreso = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -106,10 +105,6 @@ public class PlantillaNuevoLote extends javax.swing.JInternalFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Galpon");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("Fecha");
-
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Aves Ingreso");
@@ -117,13 +112,6 @@ public class PlantillaNuevoLote extends javax.swing.JInternalFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("Nombre lote");
-
-        txfFecha.setText("jTextField1");
-        txfFecha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txfFechaActionPerformed(evt);
-            }
-        });
 
         txfAvesIngreso.setText("jTextField1");
 
@@ -146,15 +134,13 @@ public class PlantillaNuevoLote extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(boxGalpon, 0, 160, Short.MAX_VALUE)
                             .addComponent(txfNombreLote)
-                            .addComponent(txfAvesIngreso)
-                            .addComponent(txfFecha))))
+                            .addComponent(txfAvesIngreso))))
                 .addGap(66, 66, 66))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
@@ -170,19 +156,15 @@ public class PlantillaNuevoLote extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(boxGalpon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txfFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txfAvesIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txfNombreLote, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txfNombreLote, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(53, 53, 53)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -242,10 +224,6 @@ public class PlantillaNuevoLote extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBorrarActionPerformed
 
-    private void txfFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfFechaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txfFechaActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<uvpavicol.clases.Galpon> boxGalpon;
@@ -254,7 +232,6 @@ public class PlantillaNuevoLote extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
@@ -262,7 +239,6 @@ public class PlantillaNuevoLote extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblLotes;
     private javax.swing.JTextField txfAvesIngreso;
-    private javax.swing.JTextField txfFecha;
     private javax.swing.JTextField txfNombreLote;
     // End of variables declaration//GEN-END:variables
 public class GalponComboBoxModel implements ComboBoxModel<Galpon>{
@@ -301,7 +277,6 @@ public class ManeadorBorrar implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
             txfAvesIngreso.setText("");
-            txfFecha.setText("");
             txfNombreLote.setText("");
             boxGalpon.setSelectedItem(null);
         }
@@ -315,7 +290,7 @@ public class ManejadorRegistrosLotes implements ActionListener{
                 Galpon galpon = (Galpon) boxGalpon.getSelectedItem();
                 int cantidadAves = Integer.parseInt(txfAvesIngreso.getText());
                 int identificador = Integer.parseInt(txfNombreLote.getText());
-                Lote lote = new Lote(fecha, galpon,cantidadAves,identificador);
+                Lote lote = new Lote(fecha, galpon,cantidadAves,identificador,EstadoLote.PRODUCCION);
 
                 empresa.addLotes(lote);
                 tblLotes.updateUI();

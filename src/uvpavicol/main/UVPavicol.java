@@ -5,6 +5,7 @@ import uvpalivol.ui.Start;
 import uvpavicol.clases.Departamento;
 import uvpavicol.clases.Empresa;
 import uvpavicol.clases.EstadoConvenio;
+import uvpavicol.clases.EstadoLote;
 import uvpavicol.clases.Galpon;
 import uvpavicol.clases.Granja;
 import uvpavicol.clases.Lote;
@@ -12,6 +13,7 @@ import uvpavicol.clases.RegistroDiario;
 import uvpavicol.clases.TipoGranja;
 import uvpavicol.clases.Municipio;
 import uvpavicol.clases.Propietario;
+import uvpavicol.clases.TipoAlimento;
 
 
 public class UVPavicol {
@@ -27,10 +29,10 @@ public class UVPavicol {
                 new Propietario(12345678, "nombre prop", "apellido", 1234567, "correo")));
         
         UVpavicol.unaGranja("prueba").addGalpones(new Galpon(1, 100));
-        UVpavicol.addLotes(new Lote(LocalDate.MIN, new Galpon(2, 200),5,1));
+        UVpavicol.addLotes(new Lote(LocalDate.MIN, new Galpon(2, 200),5,1,EstadoLote.PRODUCCION));
         
         float alimento = 1;
-        UVpavicol.unLote("1").addRegistroDiario(new RegistroDiario(LocalDate.now(), alimento, 0, 0));
+        UVpavicol.unLote("1").addRegistroDiario(new RegistroDiario(LocalDate.now(), alimento,TipoAlimento.CRECIMIENTO, 0, 0));
         
         new Start(UVpavicol).setVisible(true);
     }

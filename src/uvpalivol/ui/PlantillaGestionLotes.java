@@ -6,7 +6,19 @@ package uvpalivol.ui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import javax.swing.ComboBoxModel;
+import javax.swing.JOptionPane;
+import javax.swing.event.ListDataListener;
+import javax.swing.table.AbstractTableModel;
 import uvpavicol.clases.Empresa;
+import uvpavicol.clases.Galpon;
+import javax.swing.JComboBox;
+import uvpavicol.clases.Lote;
+import uvpavicol.clases.RegistroDiario;
+import uvpavicol.clases.Salida;
+import uvpavicol.clases.TipoAlimento;
 
 /**
  *
@@ -14,18 +26,26 @@ import uvpavicol.clases.Empresa;
  */
 public class PlantillaGestionLotes extends javax.swing.JInternalFrame {
     private Empresa empresa;
+    
     /**
-     * Creates new form PlantillaGestionLotes
+     * Creates new form GestionRegistroDiarios
      */
     public PlantillaGestionLotes(Empresa empresa) {
         this.empresa=empresa;
         initComponents();
         
-        btnLote.addActionListener(new ManejadorNuevoLote());
-        btnRegistroDiario.addActionListener(new ManejadorRegistroDiario());
-        btnSalida.addActionListener(new ManejadorSalidas());
+        btnGuardarDiario.addActionListener(new ManejadorRegistrosDiario());
+        btnBorrarDiario.addActionListener(new ManejadorBorrarRegistroDiario());
+        boxLotes.setModel(new LoteComboBoxModel(empresa));
         
+        btnGuardarSalida.addActionListener(new ManejadorRegistrosSalidas());
+        btnBorrarSalida.addActionListener(new ManejadorBorrarSalidas());
+        boxLotesSalida.setModel(new LoteComboBoxModel(empresa));
         
+        tblLotes.setModel(new LoteInfoModel());
+        
+        btnBorrarDiario.doClick();
+        btnBorrarSalida.doClick();
     }
 
     /**
@@ -37,163 +57,453 @@ public class PlantillaGestionLotes extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel5 = new javax.swing.JPanel();
-        btnLote = new javax.swing.JButton();
-        btnSalida = new javax.swing.JButton();
-        btnRegistroDiario = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
-        desktop = new javax.swing.JDesktopPane();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblLotes = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        txfCantidadAlimento = new javax.swing.JTextField();
+        btnGuardarDiario = new javax.swing.JButton();
+        btnBorrarDiario = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        boxLotes = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        txfMuertes = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        txfPesoMedio = new javax.swing.JTextField();
+        boxTipoAlimento = new JComboBox<>(TipoAlimento.values());
+        jLabel11 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        btnGuardarSalida = new javax.swing.JButton();
+        btnBorrarSalida = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        boxLotesSalida = new javax.swing.JComboBox<>();
+        txfAvesSacrificar = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
 
-        jPanel5.setBackground(new java.awt.Color(255, 102, 102));
-        jPanel5.setDoubleBuffered(false);
-        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setBorder(null);
 
-        btnLote.setBackground(new java.awt.Color(255, 102, 102));
-        btnLote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/building3.png"))); // NOI18N
-        btnLote.setBorderPainted(false);
-        btnLote.addActionListener(new java.awt.event.ActionListener() {
+        jPanel2.setBackground(new java.awt.Color(255, 102, 102));
+
+        tblLotes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tblLotes);
+
+        jPanel1.setBackground(new java.awt.Color(255, 204, 204));
+
+        txfCantidadAlimento.setText("jTextField1");
+
+        btnGuardarDiario.setText("Registro");
+        btnGuardarDiario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLotebtnGstnGranjaActionPerformed(evt);
+                btnGuardarDiarioActionPerformed(evt);
             }
         });
-        jPanel5.add(btnLote, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 60, -1));
 
-        btnSalida.setBackground(new java.awt.Color(255, 102, 102));
-        btnSalida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/useredit.png"))); // NOI18N
-        btnSalida.setBorderPainted(false);
-        btnSalida.addActionListener(new java.awt.event.ActionListener() {
+        btnBorrarDiario.setText("Cancelar lote");
+        btnBorrarDiario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalidabtnUsuarioActionPerformed(evt);
+                btnBorrarDiarioActionPerformed(evt);
             }
         });
-        jPanel5.add(btnSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 60, -1));
 
-        btnRegistroDiario.setBackground(new java.awt.Color(255, 102, 102));
-        btnRegistroDiario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/gallina (1).png"))); // NOI18N
-        btnRegistroDiario.setBorderPainted(false);
-        btnRegistroDiario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistroDiariojButton9ActionPerformed(evt);
-            }
-        });
-        jPanel5.add(btnRegistroDiario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 60, -1));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel2.setText("Nombre Lote");
 
-        jButton13.setBackground(new java.awt.Color(255, 102, 102));
-        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Univalle.png"))); // NOI18N
-        jButton13.setBorder(null);
-        jButton13.setBorderPainted(false);
-        jPanel5.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, -1));
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel4.setText("Tipo Alimento");
 
-        desktop.setBackground(new java.awt.Color(255, 204, 204));
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel6.setText("Cant alimento");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pollo Navidad 2.png"))); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Registro Diario");
 
-        desktop.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel7.setText("Muertes");
 
-        javax.swing.GroupLayout desktopLayout = new javax.swing.GroupLayout(desktop);
-        desktop.setLayout(desktopLayout);
-        desktopLayout.setHorizontalGroup(
-            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(desktopLayout.createSequentialGroup()
-                .addGap(220, 220, 220)
-                .addComponent(jLabel1)
-                .addContainerGap(260, Short.MAX_VALUE))
+        txfMuertes.setText("jTextField1");
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel8.setText("Peso Medio");
+
+        txfPesoMedio.setText("jTextField1");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(btnGuardarDiario)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnBorrarDiario))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txfCantidadAlimento)
+                            .addComponent(txfMuertes)
+                            .addComponent(txfPesoMedio)
+                            .addComponent(boxTipoAlimento, 0, 160, Short.MAX_VALUE)
+                            .addComponent(boxLotes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(66, 66, 66))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
-        desktopLayout.setVerticalGroup(
-            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(desktopLayout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addComponent(jLabel1)
-                .addContainerGap(32, Short.MAX_VALUE))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(39, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boxLotes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boxTipoAlimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txfCantidadAlimento, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txfMuertes, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txfPesoMedio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(63, 63, 63)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBorrarDiario, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGuardarDiario, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14))
         );
 
-        jPanel5.add(desktop, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 880, 490));
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pollo Reducido máspng.png"))); // NOI18N
+
+        jPanel3.setBackground(new java.awt.Color(255, 204, 204));
+
+        btnGuardarSalida.setText("Registrar Salida");
+        btnGuardarSalida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarSalidaActionPerformed(evt);
+            }
+        });
+
+        btnBorrarSalida.setText("Cancelar lote");
+        btnBorrarSalida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarSalidaActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel5.setText("Nombre Lotes");
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel10.setText("Aves Sacrifica");
+
+        txfAvesSacrificar.setText("jTextField1");
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("Salida");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(boxLotesSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txfAvesSacrificar, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 11, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(btnGuardarSalida)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnBorrarSalida)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boxLotesSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txfAvesSacrificar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGuardarSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBorrarSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(168, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addComponent(jLabel11)))
+                .addGap(5, 5, 5)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 32, Short.MAX_VALUE)
+                .addComponent(jLabel11)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 878, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnLotebtnGstnGranjaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLotebtnGstnGranjaActionPerformed
+    private void btnGuardarDiarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarDiarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnLotebtnGstnGranjaActionPerformed
+    }//GEN-LAST:event_btnGuardarDiarioActionPerformed
 
-    private void btnSalidabtnUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalidabtnUsuarioActionPerformed
+    private void btnBorrarDiarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarDiarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnSalidabtnUsuarioActionPerformed
+    }//GEN-LAST:event_btnBorrarDiarioActionPerformed
 
-    private void btnRegistroDiariojButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroDiariojButton9ActionPerformed
+    private void btnGuardarSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarSalidaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnRegistroDiariojButton9ActionPerformed
+    }//GEN-LAST:event_btnGuardarSalidaActionPerformed
+
+    private void btnBorrarSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarSalidaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBorrarSalidaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnLote;
-    private javax.swing.JButton btnRegistroDiario;
-    private javax.swing.JButton btnSalida;
-    private javax.swing.JDesktopPane desktop;
-    private javax.swing.JButton jButton13;
+    private javax.swing.JComboBox<uvpavicol.clases.Lote> boxLotes;
+    private javax.swing.JComboBox<uvpavicol.clases.Lote> boxLotesSalida;
+    private javax.swing.JComboBox<uvpavicol.clases.TipoAlimento> boxTipoAlimento;
+    private javax.swing.JButton btnBorrarDiario;
+    private javax.swing.JButton btnBorrarSalida;
+    private javax.swing.JButton btnGuardarDiario;
+    private javax.swing.JButton btnGuardarSalida;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel5;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblLotes;
+    private javax.swing.JTextField txfAvesSacrificar;
+    private javax.swing.JTextField txfCantidadAlimento;
+    private javax.swing.JTextField txfMuertes;
+    private javax.swing.JTextField txfPesoMedio;
     // End of variables declaration//GEN-END:variables
 
-    public class ManejadorRegistroDiario implements ActionListener {
-            private PlantillaGestionRegistroDiarios vtnGestionGranja = null;
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            if (this.vtnGestionGranja == null){
-                vtnGestionGranja = new PlantillaGestionRegistroDiarios(empresa);
-                desktop.add(vtnGestionGranja);
-            }
-            vtnGestionGranja.setVisible(true);
+    
+    public class LoteComboBoxModel implements ComboBoxModel<Lote> {
+        private Object selected= null;// Objeto seleccionado en el JComboBox
+        private Empresa empresa;
+        
+        //@Override
+        public  LoteComboBoxModel(Empresa empresa) {
+           this.empresa=empresa;//tipo objeto que recibe
         }
         
-    }
-
-    public class ManejadorNuevoLote implements ActionListener {
-
-        private PlantillaNuevoLote vtnGestionLotes = null;
-
         @Override
-        public void actionPerformed(ActionEvent e) {
-            if (this.vtnGestionLotes == null) {
-                vtnGestionLotes = new  PlantillaNuevoLote (empresa);
-                desktop.add(vtnGestionLotes);
-            }
-            vtnGestionLotes.setVisible(true);
+        public void setSelectedItem(Object item) {
+            this.selected = item;//seleccionar item
+        }
+        @Override
+        public int getSize() {
+            return empresa.getLosLotes().size();
+        }
+        @Override
+        public Lote getElementAt(int index) {
+            return empresa.getLosLotes().get(index);
+        }
+        @Override
+        public Object getSelectedItem() {
+            return this.selected;
+        }
+        @Override
+        public void addListDataListener(ListDataListener l) {}
+        @Override
+        public void removeListDataListener(ListDataListener l) {}
+    }
+    
+    public class LoteInfoModel extends AbstractTableModel{
+        @Override
+        public int getRowCount() {
+            return empresa.getLosLotes().size();
         }
 
-    }
-
-    public class ManejadorSalidas implements ActionListener {
-
-        private PlantillaGestionarSalidas vtnUsuarios = null;
-
         @Override
-        public void actionPerformed(ActionEvent e) {
-            if (this.vtnUsuarios == null) {
-                vtnUsuarios = new PlantillaGestionarSalidas (empresa);
-                desktop.add(vtnUsuarios);
-            }
-            vtnUsuarios.setVisible(true);
-
+        public int getColumnCount() {
+            return 2;
         }
 
+        @Override
+        public Object getValueAt(int rowIndex, int columnIndex) {
+            Lote loteParaTabla = empresa.getLosLotes().get(rowIndex);
+            switch (columnIndex) {
+                case 0: return loteParaTabla.getGalpon().getIdentificador();
+                case 1: return loteParaTabla.getIdentificador();
+                default:
+                    throw new AssertionError();
+            }
+        }
+        @Override
+        public String getColumnName(int column) {
+            switch (column) {
+                case 0:return " galpon";
+                case 1: return "identificador lote";
+            }
+            return "reza pq nc, como se ejecutaria esto";
+        
+        }
     }
+    
+    public class ManejadorBorrarRegistroDiario implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            txfCantidadAlimento.setText("");
+            txfMuertes.setText("");
+            txfPesoMedio.setText("");
+        }
+    }
+    public class ManejadorRegistrosDiario implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                Lote lote = (Lote) boxLotes.getSelectedItem();
+            
+                LocalDate fecha =  LocalDate.now();
+                float cantidadAlimento = Float.parseFloat(txfCantidadAlimento.getText());
+                int avesMuertas = Integer.parseInt(txfMuertes.getText());
+                double pesoPromedio = Double.parseDouble(txfPesoMedio.getText());
+                TipoAlimento tipoAlimento = (TipoAlimento) boxTipoAlimento.getSelectedItem();
+
+                RegistroDiario diario= new RegistroDiario(fecha,cantidadAlimento,tipoAlimento,avesMuertas,pesoPromedio);
+            
+                lote.addRegistroDiario(diario);
+            
+                tblLotes.updateUI();
+                JOptionPane.showMessageDialog(PlantillaGestionLotes.this,"Se guardo Registro");
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(PlantillaGestionLotes.this,ex.getMessage());
+            }
+        }
+    }
+    
+    public class ManejadorBorrarSalidas implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            txfAvesSacrificar.setText("");
+            boxLotesSalida.setSelectedItem(null);
+        }
+    }
+    public class ManejadorRegistrosSalidas implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                Lote lote = (Lote) boxLotesSalida.getSelectedItem();
+                
+                long avesSacrificadas = Long.parseLong(txfAvesSacrificar.getText());
+                LocalDate fecha = LocalDate.now();
+                LocalTime hora = LocalTime.now();
+                long avesVivas = lote.diferenciaAves();
+                
+                Salida salida = new Salida(avesSacrificadas, fecha, hora,avesVivas);
+                
+                lote.addSalidas(salida);
+                JOptionPane.showMessageDialog(PlantillaGestionLotes.this,"Se Registro Salida Aves");
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(PlantillaGestionLotes.this,ex.getMessage());  
+            }
+        }
+    }
+
 }

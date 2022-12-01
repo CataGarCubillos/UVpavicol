@@ -11,11 +11,12 @@ public class Lote {
     private int identificador;
     //asociacion uno a uno
     private Galpon galpon;
+    private EstadoLote estado;
     //asociacion uno a muchos
     private List<Salida> salidas = new LinkedList<>();
     private List<RegistroDiario> registrosDiarios = new LinkedList<>();
 
-    public Lote(LocalDate fechaIngreso, Galpon galpon, int cantidadAves, int identificador) throws Exception {
+    public Lote(LocalDate fechaIngreso, Galpon galpon, int cantidadAves, int identificador, EstadoLote estadoLote) throws Exception {
         if(fechaIngreso== null){
             throw new Exception("ERROR. todo lote debe tener regristrada su fecha de ingreso.");
         }
@@ -28,6 +29,7 @@ public class Lote {
         if(identificador <= 0){
             throw new Exception("ERROR. todo lote debe contener almenos una ave");
         }
+        this.estado=estado;
         this.fechaIngreso = fechaIngreso;
         this.galpon = galpon;
         this.cantidadAves = cantidadAves;
@@ -45,6 +47,10 @@ public class Lote {
     @Override
     public String toString() {
         return "" + "id:" + identificador + ' ';
+    }
+
+    public void setEstado(EstadoLote estado) {
+        this.estado = estado;
     }
     
     
@@ -112,6 +118,10 @@ public class Lote {
         }return sacrificio;
     }
     public long diferenciaAves(){
-        return this.getGalpon().getCantidadAves()-(this.CantidadAvesMuertas()+this.cantidadSAcrificadas());
+        long vivas=this.getGalpon().getCantidadAves()-(this.CantidadAvesMuertas()+this.cantidadSAcrificadas());
+        if(vivas <= 0){
+            setEstado(EstadoLote.FINALIZADO);
+        }
+        return vivas;
     }
 }
