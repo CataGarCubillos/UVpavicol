@@ -2,7 +2,7 @@
 package uvpavicol.clases;
 
 
-class Municipio {
+ public class Municipio {
     //atrivutos propios
     private String nombre;
     private Departamento elDepartamento;

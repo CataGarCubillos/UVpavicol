@@ -1,6 +1,8 @@
 
 package uvpavicol.clases;
 
+import java.util.Objects;
+
 
 public class Usuario {
     //atributos propios
@@ -11,20 +13,19 @@ public class Usuario {
     private Granja laGranja;
     //no hay asociacion a muchos
     
-    public Usuario(String nombre, String correo, String password) throws Exception {
-        nombre = nombre.trim();
-        if(nombre.equals("")){
-            throw new Exception("El usuario debe tener un nombre");
+    public Usuario(String nombre, String correo, String password ) throws Exception {
+        
+            if(nombre == null ||"".equals(nombre)){
+            throw new Exception("Porfavor digite el nombre del Usuario");
         }         
-        correo = correo.trim();
-        if(correo.equals("")){
-            throw new Exception("El usuario debe tener un correo");
+        if(correo == null ||"".equals(nombre)){
+            throw new Exception("Porfavor digite el correo del Propietario");
         } 
-        password = password.trim();
-        if(password.equals("")){
-            throw new Exception("El usuario debe tener una contraseña");
+        if(password == null ||"".equals(nombre)){
+            throw new Exception("Porfavor digite la contraseña del Propietario");
         } 
-      
+       
+       
         this.nombre = nombre;
         this.correo = correo;
         this.password = password;
@@ -57,4 +58,35 @@ public class Usuario {
     public void setLaGranja(Granja laGranja) {
         this.laGranja = laGranja;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 79 * hash + Objects.hashCode(this.correo);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Usuario other = (Usuario) obj;
+        return Objects.equals(this.correo, other.correo);
+    }
+
+    
+
+   
+
+ 
+    
+    
+    
 }

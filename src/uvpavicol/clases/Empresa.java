@@ -24,10 +24,22 @@ public class Empresa {
     }
 
     //metodos de usuario
-    public void addUsuarios(Usuario usuarios) {
-        this.losUsuarios.add(usuarios);
+    public void addUsuario(Usuario Nuevo) throws Exception {
+        if (this.losUsuarios.contains(Nuevo)) {
+            throw new Exception("el Usuario ya se encuentra registrado");
+        } else {
+            losUsuarios.add(Nuevo);
+        }
     }
-
+    
+      public Usuario buscarUsuario (String email,String contra) throws RegistradoException{
+        for(int i=0;i<this.losUsuarios.size();i++){
+            Usuario usuario = this.losUsuarios.get(i);
+            if(usuario.getCorreo().equals(email) && usuario.getPassword().equals(contra)){
+                return usuario;
+            } 
+        }throw new RegistradoException("El usuario no fue registrado");
+    }             
     public void removeUsuarios(Usuario usuarios) {
         this.losUsuarios.remove(usuarios);
     }
@@ -38,17 +50,6 @@ public class Empresa {
 
     public void setLosUusuarios(List<Usuario> losUusuarios) {
         this.losUsuarios = losUusuarios;
-    }
-
-    //Método para buscar un usuario
-    public Usuario buscarUsuarios(String userName) throws UserRegistreredException {
-        for (int i = 0; i < this.losUsuarios.size(); i++) {
-            Usuario myUser = this.losUsuarios.get(i);
-            if (myUser.getNombre() == userName) {
-                return myUser;
-            }
-        }
-        throw new UserRegistreredException (" El usuario ya ha sido usado y/o creado, porfavor, pruebe con otro");
     }
 
 //----------------------------------------------------------------------------

@@ -2,6 +2,7 @@ package uvpalivol.ui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import uvpavicol.clases.Empresa;
 
 public class Start extends javax.swing.JFrame {
@@ -14,7 +15,7 @@ public class Start extends javax.swing.JFrame {
         btnLote.addActionListener(new ManejadorAbrirGestionLotes());
         btnGranja.addActionListener(new ManejadorAbirGestionGranja());
         btnUsuario1.addActionListener(new ManejadorAbrirUsuarios());
-        btnCerrar.addActionListener(new manejadorCerrar());
+  
     }
 
     @SuppressWarnings("unchecked")
@@ -121,7 +122,9 @@ public class Start extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUsuarioActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
+       JOptionPane.showMessageDialog(Start.this, "¡Hasta la próxima y felices fiestas\n"
+               +"       te desea el MundoPavicol!");
+        this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void btnGstnGranjaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGstnGranjaActionPerformed
@@ -146,17 +149,18 @@ public class Start extends javax.swing.JFrame {
 
     //Manejadores para abrir las ventanas
     public class ManejadorAbirGestionGranja implements ActionListener {
-            private GestionGranjas vtnGestionGranja = null;
+
+        private GestionGranjas vtnGestionGranja = null;
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (this.vtnGestionGranja == null){
+            if (this.vtnGestionGranja == null) {
                 vtnGestionGranja = new GestionGranjas(empresa);
                 desktop.add(vtnGestionGranja);
             }
             vtnGestionGranja.setVisible(true);
         }
-        
+
     }
 
     public class ManejadorAbrirGestionLotes implements ActionListener {
@@ -190,15 +194,4 @@ public class Start extends javax.swing.JFrame {
 
     }
 
-    
-    
-    public class manejadorCerrar implements ActionListener{
-            private Start inicio;
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            inicio.dispose();
-        }
-        
-    }
 }

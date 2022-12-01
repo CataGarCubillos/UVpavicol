@@ -2,7 +2,7 @@
 package uvpavicol.clases;
 
 
-class Propietario {
+public class Propietario {
     //atributos propios
     private long identificacion;
     private String nombre;
