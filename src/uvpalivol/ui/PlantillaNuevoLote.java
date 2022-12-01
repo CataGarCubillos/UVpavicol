@@ -34,7 +34,7 @@ public class PlantillaNuevoLote extends javax.swing.JInternalFrame {
         btnBorrar.addActionListener(new ManeadorBorrar());
                 
         boxGalpon.setModel(new GalponComboBoxModel(empresa));
-        //tblLotes.setModel(new LotesModelo());
+        tblLotes.setModel(new LotesModelo());
         
         btnBorrar.doClick();
     }

@@ -25,6 +25,7 @@ public class PlantillaGestionLotes extends javax.swing.JInternalFrame {
         btnRegistroDiario.addActionListener(new ManejadorRegistroDiario());
         btnSalida.addActionListener(new ManejadorSalidas());
         
+        
     }
 
     /**
