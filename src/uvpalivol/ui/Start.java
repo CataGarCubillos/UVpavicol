@@ -12,10 +12,12 @@ public class Start extends javax.swing.JFrame {
     public Start(Empresa empresa) {
         this.empresa = empresa;
         initComponents();
-      
+
         btnGranja.addActionListener(new ManejadorAbirGestionGranja());
         btnUsuario1.addActionListener(new ManejadorAbrirUsuarios());
-  
+        btnGestLotes.addActionListener(new ManejadorGestionLotes());
+        btnLote.addActionListener(new ManejadorCrearLotes());
+
     }
 
     @SuppressWarnings("unchecked")
@@ -26,8 +28,9 @@ public class Start extends javax.swing.JFrame {
         btnGranja = new javax.swing.JButton();
         btnUsuario1 = new javax.swing.JButton();
         btnLote = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
-        btnCerrar = new javax.swing.JButton();
+        Loguito = new javax.swing.JButton();
+        btnGestLotes = new javax.swing.JButton();
+        btnCerrarSesion = new javax.swing.JButton();
         desktop = new javax.swing.JDesktopPane();
         jLabel1 = new javax.swing.JLabel();
 
@@ -47,7 +50,7 @@ public class Start extends javax.swing.JFrame {
                 btnGstnGranjaActionPerformed(evt);
             }
         });
-        jPanel5.add(btnGranja, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 60, -1));
+        jPanel5.add(btnGranja, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 60, -1));
 
         btnUsuario1.setBackground(new java.awt.Color(255, 102, 102));
         btnUsuario1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/useredit.png"))); // NOI18N
@@ -57,35 +60,47 @@ public class Start extends javax.swing.JFrame {
                 btnUsuarioActionPerformed(evt);
             }
         });
-        jPanel5.add(btnUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 60, -1));
+        jPanel5.add(btnUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 60, -1));
 
-        btnLote.setBackground(new java.awt.Color(255, 102, 102));
+        btnLote.setBackground(new java.awt.Color(255, 51, 51));
         btnLote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/gallina (1).png"))); // NOI18N
+        btnLote.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnLote.setBorderPainted(false);
         btnLote.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
             }
         });
-        jPanel5.add(btnLote, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 60, -1));
+        jPanel5.add(btnLote, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 60, -1));
 
-        jButton13.setBackground(new java.awt.Color(255, 102, 102));
-        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Univalle.png"))); // NOI18N
-        jButton13.setBorder(null);
-        jButton13.setBorderPainted(false);
-        jPanel5.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, -1));
+        Loguito.setBackground(new java.awt.Color(255, 102, 102));
+        Loguito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Univalle.png"))); // NOI18N
+        Loguito.setBorder(null);
+        Loguito.setBorderPainted(false);
+        jPanel5.add(Loguito, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 60, -1));
 
-        btnCerrar.setBackground(new java.awt.Color(102, 51, 0));
-        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoutcurve.png"))); // NOI18N
-        btnCerrar.setBorder(null);
-        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+        btnGestLotes.setBackground(new java.awt.Color(255, 102, 102));
+        btnGestLotes.setForeground(new java.awt.Color(255, 102, 102));
+        btnGestLotes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Añadir Galpon.png"))); // NOI18N
+        btnGestLotes.setBorder(null);
+        btnGestLotes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                btnGestLotesActionPerformed(evt);
             }
         });
-        jPanel5.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 560, 60, 60));
+        jPanel5.add(btnGestLotes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 60, -1));
 
-        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, 620));
+        btnCerrarSesion.setBackground(new java.awt.Color(102, 0, 0));
+        btnCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoutcurve.png"))); // NOI18N
+        btnCerrarSesion.setBorder(null);
+        btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarSesionActionPerformed(evt);
+            }
+        });
+        jPanel5.add(btnCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 580, 60, 70));
+
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 60, 650));
 
         desktop.setBackground(new java.awt.Color(255, 204, 204));
 
@@ -98,19 +113,19 @@ public class Start extends javax.swing.JFrame {
         desktopLayout.setHorizontalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(desktopLayout.createSequentialGroup()
-                .addGap(232, 232, 232)
+                .addGap(226, 226, 226)
                 .addComponent(jLabel1)
-                .addContainerGap(358, Short.MAX_VALUE))
+                .addContainerGap(364, Short.MAX_VALUE))
         );
         desktopLayout.setVerticalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(desktopLayout.createSequentialGroup()
-                .addGap(103, 103, 103)
+                .addGap(94, 94, 94)
                 .addComponent(jLabel1)
-                .addContainerGap(110, Short.MAX_VALUE))
+                .addContainerGap(146, Short.MAX_VALUE))
         );
 
-        getContentPane().add(desktop, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, 990, -1));
+        getContentPane().add(desktop, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, 990, 640));
 
         getAccessibleContext().setAccessibleDescription("Proyecto Final");
 
@@ -121,12 +136,6 @@ public class Start extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnUsuarioActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-       JOptionPane.showMessageDialog(Start.this, "¡Hasta la próxima y felices fiestas\n"
-               +"       te desea el MundoPavicol!");
-        this.dispose();        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
-
     private void btnGstnGranjaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGstnGranjaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnGstnGranjaActionPerformed
@@ -135,19 +144,68 @@ public class Start extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton9ActionPerformed
 
+    private void btnGestLotesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestLotesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGestLotesActionPerformed
+
+    private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
+       JOptionPane.showMessageDialog(Start.this, "¡Esperamos volver a verte pronto!");
+        this.dispose();
+    }//GEN-LAST:event_btnCerrarSesionActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCerrar;
+    private javax.swing.JButton Loguito;
+    private javax.swing.JButton btnCerrarSesion;
+    private javax.swing.JButton btnGestLotes;
     private javax.swing.JButton btnGranja;
     private javax.swing.JButton btnLote;
     private javax.swing.JButton btnUsuario1;
     private javax.swing.JDesktopPane desktop;
-    private javax.swing.JButton jButton13;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel5;
     // End of variables declaration//GEN-END:variables
 
-    //Manejadores para abrir las ventanas
+
+
+
+
+//Manejadores para abrir las ventanas
+    
+    //El botón Lote da nullPointerexception Ya que da algunos conflictos con el comboBox donde se agregan objetos de tipo Granja
+    //Todo lo que tenga que ver con Granjas  y Galpones sabrá usted que era parte de nuestro compañero felipe. 
+    public class ManejadorCrearLotes implements ActionListener {
+
+        private PlantillaNuevoLote vtnNuevoLote = null;
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (this.vtnNuevoLote == null) {
+                vtnNuevoLote = new PlantillaNuevoLote(empresa);
+                desktop.add(vtnNuevoLote);
+            }
+            vtnNuevoLote.setVisible(true);
+        }
+
+    }
+    
+    public class ManejadorGestionLotes implements ActionListener {
+
+        private PlantillaGestionLotes vtnGesLotes = null;
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (this.vtnGesLotes == null) {
+                vtnGesLotes = new PlantillaGestionLotes(empresa);
+                desktop.add(vtnGesLotes);
+            }
+            vtnGesLotes.setVisible(true);
+        }
+
+    }
+
+    
+    
     public class ManejadorAbirGestionGranja implements ActionListener {
 
         private GestionGranjas vtnGestionGranja = null;
@@ -162,8 +220,6 @@ public class Start extends javax.swing.JFrame {
         }
 
     }
-
-    
 
     public class ManejadorAbrirUsuarios implements ActionListener {
 
