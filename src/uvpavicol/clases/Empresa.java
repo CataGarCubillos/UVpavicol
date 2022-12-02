@@ -15,8 +15,7 @@ public class Empresa {
 
     public Empresa(String nombre) throws Exception {
 
-        nombre = nombre.trim();
-        if (nombre.equals("")) {
+        if (nombre == null || "".equals(nombre)) {
             throw new Exception("Porfavor digite el nombre de la empresa");
         }
 
@@ -31,15 +30,17 @@ public class Empresa {
             losUsuarios.add(Nuevo);
         }
     }
-    
-      public Usuario buscarUsuario (String email,String contra) throws RegistradoException{
-        for(int i=0;i<this.losUsuarios.size();i++){
+
+    public Usuario buscarUsuario(String email, String contra) throws RegistradoException {
+        for (int i = 0; i < this.losUsuarios.size(); i++) {
             Usuario usuario = this.losUsuarios.get(i);
-            if(usuario.getCorreo().equals(email) && usuario.getPassword().equals(contra)){
+            if (usuario.getCorreo().equals(email) && usuario.getPassword().equals(contra)) {
                 return usuario;
-            } 
-        }throw new RegistradoException("El usuario no fue registrado");
-    }             
+            }
+        }
+        throw new RegistradoException("El usuario no fue registrado");
+    }
+
     public void removeUsuarios(Usuario usuarios) {
         this.losUsuarios.remove(usuarios);
     }
@@ -69,6 +70,16 @@ public class Empresa {
     public void setLosLotes(List<Lote> losLotes) {
         this.losLotes = losLotes;
     }
+    
+     public Lote unLote(String nombre) {
+        for (int i = 0; i < getLosLotes().size(); i++) {
+            Lote registrado = getLosLotes().get(i);
+            if (nombre.equals(String.valueOf(registrado.getIdentificador()))) {
+                return registrado;
+            }
+        }
+        return null;
+    }
 //----------------------------------------------------------------------------
     //metodos de granja
 
@@ -82,6 +93,16 @@ public class Empresa {
 
     public List<Granja> getLasGranjas() {
         return lasGranjas;
+    }
+    
+       public Granja unaGranja(String nombre) {
+        for (int i = 0; i < getLasGranjas().size(); i++) {
+            Granja registrado = getLasGranjas().get(i);
+            if (nombre.equals(registrado.getNombre())) {
+                return registrado;
+            }
+        }
+        return null;
     }
 
     public void setLasGranjas(List<Granja> lasGranjas) {

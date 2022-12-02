@@ -5,26 +5,23 @@ import java.time.LocalDate;
 
 public class RegistroDiario {
     //atrubutos propios
-    public enum TIPOALIMENTO {
-    INICIADOR, CRECIMIENTO, ENGORDE
-}
     private LocalDate fecha;
     private float cantidadAlimento;
-    private long avesIngresadas;
     private int avesMuertas;
     private double pesoPromedio;
+    private TipoAlimento tipoAlimento;
     //no hay uno a uno
     //no hay uno a muchos
 
-    public RegistroDiario(LocalDate fecha, float cantidadAlimento, long avesIngresadas, int avesMuertas, double pesoPromedio) throws Exception {
+    public RegistroDiario(LocalDate fecha, float cantidadAlimento,TipoAlimento tipoAlimento, int avesMuertas, double pesoPromedio) throws Exception {
         if(fecha == null){
             throw new Exception("ERROR. cada registro debe tener una fecha");
         }
-        if(cantidadAlimento <0){
-            throw new Exception("ERROR. La cantidad de alimentos debe ser un 0 (cero) o mayor");
+        if(cantidadAlimento <1 ){
+            throw new Exception("ERROR. La cantidad de alimentos debe ser mayor a 0");
         }
-        if(avesIngresadas <0){
-            throw new Exception("ERROR. La cantidad de aves ingresadas debe ser un 0 (cero) o mayor");
+        if(tipoAlimento == null){
+            throw new Exception("ERROR. cada registro debe tener una fecha");
         }
         if(avesMuertas <0){
             throw new Exception("ERROR. La cantidad de aves muertas debe ser un 0 (cero) o mayor");
@@ -34,7 +31,7 @@ public class RegistroDiario {
         }
         this.fecha = LocalDate.now();
         this.cantidadAlimento = cantidadAlimento;
-        this.avesIngresadas = 0;
+        this.tipoAlimento = tipoAlimento;
         this.avesMuertas = 0;
         this.pesoPromedio = 0;
     }
@@ -46,9 +43,6 @@ public class RegistroDiario {
     public float getCantidadAlimento() {
         return cantidadAlimento;
     }
-    public long getAvesIngresadas() {
-        return avesIngresadas;
-    }
     public int getAvesMuertas() {
         return avesMuertas;
     }
@@ -56,15 +50,16 @@ public class RegistroDiario {
         return pesoPromedio;
     }
 
+    public TipoAlimento getTipoAlimento() {
+        return tipoAlimento;
+    }
+    
     //metodos set
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
     public void setCantidadAlimento(float cantidadAlimento) {
         this.cantidadAlimento = cantidadAlimento;
-    }
-    public void setAvesIngresadas(long avesIngresadas) {
-        this.avesIngresadas = avesIngresadas;
     }
     public void setAvesMuertas(int avesMuertas) {
         this.avesMuertas = avesMuertas;

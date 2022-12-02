@@ -12,7 +12,7 @@ public class Start extends javax.swing.JFrame {
     public Start(Empresa empresa) {
         this.empresa = empresa;
         initComponents();
-        btnLote.addActionListener(new ManejadorAbrirGestionLotes());
+      
         btnGranja.addActionListener(new ManejadorAbirGestionGranja());
         btnUsuario1.addActionListener(new ManejadorAbrirUsuarios());
   
@@ -163,20 +163,7 @@ public class Start extends javax.swing.JFrame {
 
     }
 
-    public class ManejadorAbrirGestionLotes implements ActionListener {
-
-        private GestionLotes vtnGestionLotes = null;
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            if (this.vtnGestionLotes == null) {
-                vtnGestionLotes = new GestionLotes(empresa);
-                desktop.add(vtnGestionLotes);
-            }
-            vtnGestionLotes.setVisible(true);
-        }
-
-    }
+    
 
     public class ManejadorAbrirUsuarios implements ActionListener {
 

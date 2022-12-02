@@ -7,22 +7,53 @@ import java.util.List;
 public class Lote {
     //atributos propios
     private LocalDate fechaIngreso;
+    private int cantidadAves;
+    private int identificador;
     //asociacion uno a uno
     private Galpon galpon;
+    private EstadoLote estado;
     //asociacion uno a muchos
     private List<Salida> salidas = new LinkedList<>();
     private List<RegistroDiario> registrosDiarios = new LinkedList<>();
 
-    public Lote(LocalDate fechaIngreso, Galpon galpon) throws Exception {
+    public Lote(LocalDate fechaIngreso, Galpon galpon, int cantidadAves, int identificador, EstadoLote estadoLote) throws Exception {
         if(fechaIngreso== null){
             throw new Exception("ERROR. todo lote debe tener regristrada su fecha de ingreso.");
         }
         if(galpon == null){
             throw new Exception("ERROR. todo lote debe tener asignado un galpon.");
         }
+        if(cantidadAves <= 0){
+            throw new Exception("ERROR. todo lote debe contener almenos una ave");
+        }
+        if(identificador <= 0){
+            throw new Exception("ERROR. todo lote debe contener almenos una ave");
+        }
+        this.estado=estado;
         this.fechaIngreso = fechaIngreso;
         this.galpon = galpon;
+        this.cantidadAves = cantidadAves;
+        this.identificador=identificador;
     }
+
+    public int getCantidadAves() {
+        return cantidadAves;
+    }
+
+    public int getIdentificador() {
+        return identificador;
+    }
+
+    @Override
+    public String toString() {
+        return "" + "id:" + identificador + ' ';
+    }
+
+    public void setEstado(EstadoLote estado) {
+        this.estado = estado;
+    }
+    
+    
 //----------------------------------------------------------------------------
     //metodos de salida
     public void removeSalidas(Salida salida) {
@@ -87,6 +118,10 @@ public class Lote {
         }return sacrificio;
     }
     public long diferenciaAves(){
-        return this.getGalpon().getCantidadAves()-(this.CantidadAvesMuertas()+this.cantidadSAcrificadas());
+        long vivas=this.getGalpon().getCantidadAves()-(this.CantidadAvesMuertas()+this.cantidadSAcrificadas());
+        if(vivas <= 0){
+            setEstado(EstadoLote.FINALIZADO);
+        }
+        return vivas;
     }
 }
