@@ -6,18 +6,22 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Salida {
-    //atributos propios
+     //atributos propios
     private long avesSacrificadas;
-    //Relaciones de asociación
+    
+    private long avesVivas;
     //Uno a muchos con la clase EstadoLote
     private List<EstadoLote> estadosLotes = new LinkedList<>();
     //Uno a uno con fecha y hora.
     private LocalDate fecha;
     private LocalTime hora;
     
-    public Salida(long avesSacrificadas, LocalDate fecha, LocalTime hora) throws Exception {
-        if(avesSacrificadas <0){
+    public Salida(long avesSacrificadas, LocalDate fecha, LocalTime hora,long avesVivas) throws Exception {
+        if(avesSacrificadas < -1){
             throw new Exception("La cantidad de aves sacrifiacadas debe ser 0 (cero) o mayor");
+        }
+        if(avesSacrificadas > avesVivas){
+            throw new Exception("La cantidad de aves sacrifiacadas debe ser menor a la cantidad total de aves");
         }
         if(fecha == null){
             throw new Exception("Cada salida debe tener una fecha especifica");
@@ -28,6 +32,7 @@ public class Salida {
         this.avesSacrificadas = 0;
         this.fecha = LocalDate.now();
         this.hora = LocalTime.now();
+        this.avesVivas=avesVivas;
     }
  //----------------------------------------------------------------------------  
     //metodos add y remove de Estado lote
@@ -51,6 +56,12 @@ public class Salida {
     public long getAvesSacrificadas() {
         return avesSacrificadas;
     }
+
+    public long getAvesVivas() {
+        return avesVivas;
+    }
+    
+    
 //----------------------------------------------------------------------------
     //metodos set
 
