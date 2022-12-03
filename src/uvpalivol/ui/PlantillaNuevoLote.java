@@ -96,20 +96,20 @@ public class PlantillaNuevoLote extends javax.swing.JInternalFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
+                .addContainerGap(37, Short.MAX_VALUE)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(274, 0, 490, -1));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(274, 0, 490, 430));
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 204));
 
         txfNombreLote.setBackground(new java.awt.Color(255, 102, 102));
         txfNombreLote.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        txfNombreLote.setForeground(new java.awt.Color(255, 102, 102));
+        txfNombreLote.setForeground(new java.awt.Color(51, 0, 0));
 
         btnGuardar.setBackground(new java.awt.Color(51, 0, 0));
         btnGuardar.setFont(new java.awt.Font("Segoe UI Symbol", 1, 14)); // NOI18N
@@ -148,11 +148,11 @@ public class PlantillaNuevoLote extends javax.swing.JInternalFrame {
 
         boxGalpon.setBackground(new java.awt.Color(255, 102, 102));
         boxGalpon.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        boxGalpon.setForeground(new java.awt.Color(255, 102, 102));
+        boxGalpon.setForeground(new java.awt.Color(51, 0, 0));
 
         txfAvesIngreso.setBackground(new java.awt.Color(255, 102, 102));
         txfAvesIngreso.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        txfAvesIngreso.setForeground(new java.awt.Color(255, 102, 102));
+        txfAvesIngreso.setForeground(new java.awt.Color(51, 0, 0));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Symbol", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 0, 0));
@@ -192,7 +192,7 @@ public class PlantillaNuevoLote extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(boxGalpon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -211,7 +211,7 @@ public class PlantillaNuevoLote extends javax.swing.JInternalFrame {
                 .addGap(52, 52, 52))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 10, 297, 405));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 10, 297, 420));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
