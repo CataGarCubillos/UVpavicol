@@ -2,16 +2,27 @@ package uvpavicol.clases;
 
 import java.util.LinkedList;
 import java.util.List;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import persistencia.GranjaJpaController;
+import persistencia.LoteJpaController;
+import persistencia.UsuarioJpaController;
 import static uvpavicol.clases.TipoGranja.CONVENIO;
 
 public class Empresa {
 
     private String nombre;
-    //no hay asociacion uno a uno
-    //asociacion a muchos
-    private List<Usuario> losUsuarios = new LinkedList<>();
-    private List<Lote> losLotes = new LinkedList<>();
-    private List<Granja> lasGranjas = new LinkedList();
+
+    private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("Proyecto_UVPavicolPU");
+
+    //private List<Usuario> losUsuarios = new LinkedList<>();
+    private UsuarioJpaController usuarioJpaController = new UsuarioJpaController(emf);
+
+    //private List<Lote> losLotes = new LinkedList<>(); 
+    private LoteJpaController loteJpaController = new LoteJpaController(emf);
+
+     //private List<Granja> lasGranjas = new LinkedList();
+    private GranjaJpaController granjaJpaController = new GranjaJpaController(emf);
 
     public Empresa(String nombre) throws Exception {
 
@@ -24,78 +35,66 @@ public class Empresa {
 
     //metodos de usuario
     public void addUsuario(Usuario Nuevo) throws Exception {
-        if (this.losUsuarios.contains(Nuevo)) {
-            throw new Exception("el Usuario ya se encuentra registrado");
-        } else {
-            losUsuarios.add(Nuevo);
-        }
+        usuarioJpaController.create(Nuevo);
     }
 
     public Usuario buscarUsuario(String email, String contra) throws RegistradoException {
-        for (int i = 0; i < this.losUsuarios.size(); i++) {
-            Usuario usuario = this.losUsuarios.get(i);
-            if (usuario.getCorreo().equals(email) && usuario.getPassword().equals(contra)) {
-                return usuario;
-            }
+        Usuario usuario = usuarioJpaController.findUsuario(email);
+
+        if (usuario == null) {
+            throw new RegistradoException("El usuario no fue registrado");
+
         }
-        throw new RegistradoException("El usuario no fue registrado");
+        return usuario;
     }
 
     public void removeUsuarios(Usuario usuarios) {
-        this.losUsuarios.remove(usuarios);
-    }
-
-    public List<Usuario> getLosUusuarios() {
-        return losUsuarios;
-    }
-
-    public void setLosUusuarios(List<Usuario> losUusuarios) {
-        this.losUsuarios = losUusuarios;
+        // this.losUsuarios.remove(usuarios);
     }
 
 //----------------------------------------------------------------------------
     //metodos de Lote
-    public void addLotes(Lote lotes) {
-        this.losLotes.add(lotes);
+    public void addLotes(Lote lotes) throws Exception {
+        this.loteJpaController.create(lotes);
     }
 
     public void removeLotes(Lote lotes) {
-        this.losLotes.add(lotes);
+        // this.losLotes.add(lotes);
     }
 
-    public List<Lote> getLosLotes() {
-        return losLotes;
-    }
+    public Lote unLote(String nombre) throws Exception {
 
-    public void setLosLotes(List<Lote> losLotes) {
-        this.losLotes = losLotes;
-    }
-    
-     public Lote unLote(String nombre) {
-        for (int i = 0; i < getLosLotes().size(); i++) {
-            Lote registrado = getLosLotes().get(i);
-            if (nombre.equals(String.valueOf(registrado.getIdentificador()))) {
-                return registrado;
-            }
+        Lote lote = loteJpaController.findLote(nombre);
+        if (lote == null) {
+            throw new Exception("No se encuentra el lote ");
         }
-        return null;
+        return lote;
+
     }
+
+    public List<Usuario> getLosUsuarios() {
+        return getLosUsuarios();
+    }
+
+    public void setLosUsuarios(List<Usuario> losUsuarios) {
+        this.usuarioJpaController = usuarioJpaController;
+    }
+
+    
+    
+    
 //----------------------------------------------------------------------------
     //metodos de granja
 
     public void addGranjas(Granja granjas) {
-        this.lasGranjas.add(granjas);
+        this.granjaJpaController.create(granjas);
     }
 
     public void removeGranjas(Granja granjas) {
-        this.lasGranjas.remove(granjas);
+        // this.lasGranjas.remove(granjas);
     }
 
-    public List<Granja> getLasGranjas() {
-        return lasGranjas;
-    }
-    
-       public Granja unaGranja(String nombre) {
+    public Granja unaGranja(String nombre) {
         for (int i = 0; i < getLasGranjas().size(); i++) {
             Granja registrado = getLasGranjas().get(i);
             if (nombre.equals(registrado.getNombre())) {
@@ -105,17 +104,42 @@ public class Empresa {
         return null;
     }
 
-    public void setLasGranjas(List<Granja> lasGranjas) {
-        this.lasGranjas = lasGranjas;
-    }
-
     public Granja InfoPropietario() {
-        for (int i = 0; i < this.lasGranjas.size(); i++) {
-            Granja info = this.lasGranjas.get(i);
+        for (int i = 0; i < this.granjaJpaController.getGranjaCount(); i++) {
+            Granja info = this.granjaJpaController.findGranja(i);
             if (info.getTipoGranja() == CONVENIO) {
                 return info;
             }
         }
         return null;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public List<Lote> getLosLotes() {
+        return getLosLotes();
+    }
+
+    public void setLosLotes(List<Lote> losLotes) {
+        this.loteJpaController = loteJpaController;
+    }
+
+    public List<Granja> getLasGranjas() {
+        return getLasGranjas();
+    }
+
+    public void setLasGranjas(List<Granja> lasGranjas) {
+        this.granjaJpaController = granjaJpaController;
+    }
+    
+    
+    
 }
+
+

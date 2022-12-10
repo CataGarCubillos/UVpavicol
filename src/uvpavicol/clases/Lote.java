@@ -1,20 +1,55 @@
 package uvpavicol.clases;
 
+import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
 
-public class Lote {
+
+
+@Entity
+public class Lote implements Serializable{
     //atributos propios
-    private LocalDate fechaIngreso;
-    private int cantidadAves;
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, length = 80)
     private int identificador;
+    
+    @Column(nullable = false)
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private LocalDate fechaIngreso;
+
+   
+    
+    @Column(nullable = false, length = 80)
+    private int cantidadAves;
+    
+    
     //asociacion uno a uno
+    
+    @OneToOne
     private Galpon galpon;
+    
+    @OneToOne
     private EstadoLote estado;
     //asociacion uno a muchos
-    private List<Salida> salidas = new LinkedList<>();
-    private List<RegistroDiario> registrosDiarios = new LinkedList<>();
+    
+    @OneToMany
+    private List<Salida> salidas = new ArrayList<>();
+    
+    @OneToMany
+    private List<RegistroDiario> registrosDiarios = new ArrayList<>();
 
     public Lote(LocalDate fechaIngreso, Galpon galpon, int cantidadAves, int identificador, EstadoLote estadoLote) throws Exception {
         if(fechaIngreso== null){
@@ -36,6 +71,10 @@ public class Lote {
         this.identificador=identificador;
     }
 
+    public Lote() {
+    }
+
+    
     public int getCantidadAves() {
         return cantidadAves;
     }

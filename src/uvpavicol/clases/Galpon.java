@@ -1,10 +1,18 @@
 
 package uvpavicol.clases;
 
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
-public class Galpon {
+@Entity
+public class Galpon implements Serializable{
     //atributos propios
+    @Id
     private int identificador;
+    
+    @Column(nullable = false, length = 80)
     private long cantidadAves;
     //no hay asociacion uno a uno
     //no hay asociacion uno a muchos
@@ -20,6 +28,11 @@ public class Galpon {
         this.cantidadAves = cantidadAves;
     }
 
+    public Galpon() {
+    }
+
+    
+    
     //metodos get
     public int getIdentificador() {
         return identificador;
@@ -40,4 +53,7 @@ public class Galpon {
     public String toString() {
         return  "id:" + identificador;
     }
+    
+    
+    
 }

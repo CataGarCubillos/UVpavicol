@@ -71,7 +71,7 @@
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="11" max="32767" attributes="0"/>
+                  <EmptySpace pref="16" max="32767" attributes="0"/>
                   <Component id="jLabel1" min="-2" pref="283" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -180,7 +180,7 @@
               <Color blue="0" green="0" red="33" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="4"/>
-            <Property name="text" type="java.lang.String" value="Nombre Lote"/>
+            <Property name="text" type="java.lang.String" value="N&#xfa;mero del lote"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">

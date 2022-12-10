@@ -62,7 +62,7 @@ public class Start extends javax.swing.JFrame {
         });
         jPanel5.add(btnUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 60, -1));
 
-        btnLote.setBackground(new java.awt.Color(255, 51, 51));
+        btnLote.setBackground(new java.awt.Color(255, 102, 102));
         btnLote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/gallina (1).png"))); // NOI18N
         btnLote.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnLote.setBorderPainted(false);
@@ -113,9 +113,9 @@ public class Start extends javax.swing.JFrame {
         desktopLayout.setHorizontalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(desktopLayout.createSequentialGroup()
-                .addGap(226, 226, 226)
+                .addGap(276, 276, 276)
                 .addComponent(jLabel1)
-                .addContainerGap(364, Short.MAX_VALUE))
+                .addContainerGap(314, Short.MAX_VALUE))
         );
         desktopLayout.setVerticalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,7 +149,7 @@ public class Start extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGestLotesActionPerformed
 
     private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
-       JOptionPane.showMessageDialog(Start.this, "¡Esperamos volver a verte pronto!");
+       JOptionPane.showMessageDialog(Start.this, "¡Esperamos volver a verte pronto!", "Cierre de sesión",  JOptionPane.OK_OPTION);
         this.dispose();
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
@@ -172,8 +172,7 @@ public class Start extends javax.swing.JFrame {
 
 //Manejadores para abrir las ventanas
     
-    //El botón Lote da nullPointerexception Ya que da algunos conflictos con el comboBox donde se agregan objetos de tipo Granja
-    //Todo lo que tenga que ver con Granjas  y Galpones sabrá usted que era parte de nuestro compañero felipe. 
+  
     public class ManejadorCrearLotes implements ActionListener {
 
         private PlantillaNuevoLote vtnNuevoLote = null;

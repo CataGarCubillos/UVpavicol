@@ -1,18 +1,44 @@
 package uvpavicol.clases;
 
-import java.util.LinkedList;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
-public class Granja {
+
+@Entity
+public class Granja implements Serializable{
     //atributos propios
+    
+    @Id 
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private long id;
+    
+    @Column (nullable = false, length = 80)
     private String nombre;
     //asociacion uno a uno
+    
+    @OneToOne
     private EstadoConvenio estadoConvenio;
+    
+    @OneToOne
     private TipoGranja tipoGranja;
+    
+    @OneToOne
     private Municipio elMunicipio;
+    
+    @OneToOne
     private Propietario elPropietario;
+    
     //asociacion uno a muchos
-    private List<Galpon> losGalpones = new LinkedList<>();
+    @OneToMany
+    private List<Galpon> losGalpones = new ArrayList<>();
 
     public Granja(String nombre, EstadoConvenio estadoConvenio, TipoGranja tipoGranja, Municipio elMunicipio, Propietario elPropietario) throws Exception {
         if(nombre == null || "".equals(nombre)){
@@ -84,4 +110,15 @@ public class Granja {
         this.losGalpones.remove(galpones);
     }
 //----------------------------------------------------------------------------
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+
+
 }
